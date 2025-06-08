@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Toolkit - App Screens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .phone {
+            width: 320px;
+            height: 640px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .phone::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+        }
+        
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 24px;
+            padding: 24px 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .screen-title {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .welcome-subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            background: #334155;
+            border-radius: 4px;
+        }
+        
+        .notification-icon {
+            width: 24px;
+            height: 24px;
+            background: #ef4444;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .notification-icon::after {
+            content: '2';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #dc2626;
+            color: white;
+            font-size: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .greeting {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 24px;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        
+        .timer-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .timer-title {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .timer-project {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .timer-display {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .timer-controls {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .timer-btn {
+            flex: 1;
+            padding: 8px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .action-btn {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+        
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .action-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            padding: 12px 0;
+        }
+        
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            color: #64748b;
+        }
+        
+        .nav-label {
+            font-size: 10px;
+            color: #64748b;
+        }
+        
+        .nav-item.active .nav-icon,
+        .nav-item.active .nav-label {
+            color: #667eea;
+        }
+        
+        /* Invoice List */
+        .invoice-list {
+            background: #f8fafc;
+        }
+        
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn {
+            font-size: 18px;
+            color: #64748b;
+        }
+        
+        .page-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .add-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .invoice-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .invoice-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .invoice-amount {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .invoice-client {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .invoice-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .invoice-date {
+            font-size: 11px;
+            color: #64748b;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        .status-paid {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-overdue {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .usage-indicator {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .usage-text {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .upgrade-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        /* Time Tracking */
+        .time-tracking {
+            background: #f8fafc;
+        }
+        
+        .no-timer-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .no-timer-text {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+        
+        .start-timer-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+        }
+        
+        .time-session {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .session-project {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        
+        .session-time {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .session-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .session-btn {
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 11px;
+            background: white;
+            color: #64748b;
+        }
+        
+        .weekly-stats {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .stats-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+        
+        .time-stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .time-stat-label {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .time-stat-value {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        /* Subscription Screen */
+        .subscription {
+            background: #f8fafc;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .plan-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        
+        .plan-subtitle {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+        
+        .usage-bar {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .usage-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        
+        .usage-label {
+            font-size: 11px;
+            color: #64748b;
+        }
+        
+        .usage-count {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .premium-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .premium-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .premium-price {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+        
+        .feature-list {
+            margin-bottom: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .feature-icon {
+            margin-right: 8px;
+        }
+        
+        .trial-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        /* Active Timer Screen */
+        .active-timer {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .timer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .app-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .stop-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timer-status {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+        
+        .timer-project-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        
+        .large-timer {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .timer-task {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+        
+        .timer-main-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .control-btn.primary {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Freelancer Toolkit - Mobile App Screens</h1>
+        
+        <div class="screens-grid">
+            <!-- Welcome Screen -->
+            <div class="phone">
+                <div class="screen welcome-screen">
+                    <div class="screen-title">Welcome Screen</div>
+                    <div class="logo">💼</div>
+                    <div class="welcome-title">FreelancePro</div>
+                    <div class="welcome-subtitle">Your all-in-one freelance<br>management toolkit</div>
+                    <button class="btn btn-primary">Continue with Email</button>
+                    <button class="btn btn-secondary">Continue with Google</button>
+                    <button class="btn btn-secondary">Continue with Apple</button>
+                    <div style="margin-top: 20px; font-size: 12px; opacity: 0.8;">
+                        Already have an account? <strong>Sign In</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="phone">
+                <div class="screen dashboard">
+                    <div class="screen-title">Dashboard</div>
+                    <div class="header">
+                        <div class="menu-icon"></div>
+                        <div class="page-title">FreelancePro</div>
+                        <div class="notification-icon"></div>
+                    </div>
+                    
+                    <div class="greeting">Good morning, Alex! 👋</div>
+                    
+                    <div class="stats-card">
+                        <div style="text-align: center; margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #64748b;">This Month</div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">$2,450</div>
+                                <div class="stat-label">Earned</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">12h</div>
+                                <div class="stat-label">Tracked</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Invoices</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">2</div>
+                                <div class="stat-label">Pending</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timer-card">
+                        <div class="timer-title">Currently tracking</div>
+                        <div class="timer-project">Website Design - ABC Corp</div>
+                        <div class="timer-display">02:35:42</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn">⏸ Pause</button>
+                            <button class="timer-btn">⏹ Stop</button>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="action-btn">
+                            <div class="action-icon">📄</div>
+                            <div class="action-label">New Invoice</div>
+                        </button>
+                        <button class="action-btn">
+                            <div class="action-icon">⏱</div>
+                            <div class="action-label">Track Time</div>
+                        </button>
+                    </div>
+                    
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <div class="nav-icon">🏠</div>
+                            <div class="nav-label">Dashboard</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">📄</div>
+                            <div class="nav-label">Invoices</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">⏱</div>
+                            <div class="nav-label">Time</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">👥</div>
+                            <div class="nav-label">Clients</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">⚙</div>
+                            <div class="nav-label">More</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice List -->
+            <div class="phone">
+                <div class="screen invoice-list">
+                    <div class="screen-title">Invoice List</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Invoices</div>
+                        <button class="add-btn">+ New</button>
+                    </div>
+                    
+                    <div class="filter-bar">
+                        <button class="filter-btn">All ▼</button>
+                        <button class="filter-btn">This Month ▼</button>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">#1024 - ABC Corp</div>
+                                <div class="invoice-client">Website Development</div>
+                            </div>
+                            <div class="invoice-amount">$1,200.00</div>
+                        </div>
+                        <div class="invoice-footer">
+                            <div class="invoice-date">📤 Sent 2 days ago</div>
+                            <div class="status-badge status-paid">Paid ✅</div>
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">#1023 - XYZ Ltd</div>
+                                <div class="invoice-client">Logo Design Package</div>
+                            </div>
+                            <div class="invoice-amount">$750.00</div>
+                        </div>
+                        <div class="invoice-footer">
+                            <div class="invoice-date">📤 Sent 5 days ago</div>
+                            <div class="status-badge status-pending">Pending ⏳</div>
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">#1022 - DEF Inc</div>
+                                <div class="invoice-client">Mobile App Consultation</div>
+                            </div>
+                            <div class="invoice-amount">$950.00</div>
+                        </div>
+                        <div class="invoice-footer">
+                            <div class="invoice-date">📤 Sent 1 week ago</div>
+                            <div class="status-badge status-overdue">Overdue ⚠</div>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-indicator">
+                        <div class="usage-text">FREE TIER: 2/5 invoices used this month</div>
+                        <button class="upgrade-btn">💎 Upgrade for unlimited invoices</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Tracking -->
+            <div class="phone">
+                <div class="screen time-tracking">
+                    <div class="screen-title">Time Tracking</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Time Tracking</div>
+                        <button class="add-btn">Reports</button>
+                    </div>
+                    
+                    <div class="no-timer-card">
+                        <div class="no-timer-text">No active timer</div>
+                        <button class="start-timer-btn">▶ Start New Timer</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Today's Sessions</div>
+                    
+                    <div class="time-session">
+                        <div class="session-project">Website Design - ABC Corp</div>
+                        <div class="session-time">9:00 AM - 11:30 AM • 2h 30m</div>
+                        <div class="session-actions">
+                            <button class="session-btn">Edit</button>
+                            <button class="session-btn">Continue</button>
+                            <button class="session-btn">Add to Invoice</button>
+                        </div>
+                    </div>
+                    
+                    <div class="weekly-stats">
+                        <div class="stats-title">Time Summary</div>
+                        <div class="time-stat">
+                            <div class="time-stat-label">This Week</div>
+                            <div class="time-stat-value">12h 45m</div>
+                        </div>
+                        <div class="time-stat">
+                            <div class="time-stat-label">This Month</div>
+                            <div class="time-stat-value">45h 20m</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #1e293b;">Recent Projects</div>
+                    <div style="font-size: 12px; color: #64748b; line-height: 1.4;">
+                        • Website Design (ABC Corp) - 12h this week<br>
+                        • Logo Package (XYZ Ltd) - 8h this week<br>
+                        • App Consultation (DEF Inc) - 3h this week
+                    </div>
+                    
+                    <div class="usage-indicator">
+                        <div class="usage-text">FREE TIER: Tracking 2/2 projects</div>
+                        <button class="upgrade-btn">💎 Upgrade for unlimited projects</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Timer -->
+            <div class="phone">
+                <div class="screen active-timer">
+                    <div class="screen-title" style="color: rgba(255,255,255,0.7);">Active Timer</div>
+                    <div class="timer-header">
+                        <div class="app-name">FreelancePro</div>
+                        <button class="stop-btn">Stop</button>
+                    </div>
+                    
+                    <div class="timer-status">TIMER ACTIVE</div>
+                    <div class="timer-project-name">Website Design - ABC Corp</div>
+                    
+                    <div class="large-timer">01:23:45</div>
+                    
+                    <div class="timer-task">Task: Homepage layout revisions</div>
+                    
+                    <div class="timer-main-controls">
+                        <button class="control-btn">⏸</button>
+                        <button class="control-btn primary">⏹</button>
+                        <button class="control-btn">📝</button>
+                    </div>
+                    
+                    <div style="font-size: 12px; opacity: 0.8; text-align: center;">
+                        <div>Recent Notes:</div>
+                        <div style="margin-top: 8px; line-height: 1.4;">
+                            • "Completed header section"<br>
+                            • "Working on responsive layout"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract Templates -->
+            <div class="phone">
+                <div class="screen">
+                    <div class="screen-title">Contract Templates</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Contracts</div>
+                        <button class="add-btn">+ Custom</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">My Templates</div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">📄 Web Development Agreement</div>
+                                <div class="invoice-client">Last used: 3 days ago</div>
+                            </div>
+                        </div>
+                        <div class="session-actions" style="margin-top: 12px;">
+                            <button class="session-btn">Use Template</button>
+                            <button class="session-btn">Edit</button>
+                            <button class="session-btn">Preview</button>
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">📄 Graphic Design Contract</div>
+                                <div class="invoice-client">Last used: 1 week ago</div>
+                            </div>
+                        </div>
+                        <div class="session-actions" style="margin-top: 12px;">
+                            <button class="session-btn">Use Template</button>
+                            <button class="session-btn">Edit</button>
+                            <button class="session-btn">Preview</button>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 24px 0 16px 0; font-size: 14px; font-weight: 600; color: #1e293b;">Template Library (Premium)</div>
+                    
+                    <div class="invoice-card" style="opacity: 0.6;">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">🔒 Marketing Consultation Agreement</div>
+                                <div class="invoice-number">🔒 Social Media Management</div>
+                                <div class="invoice-number">🔒 Content Creation Contract</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 12px;">
+                            <button class="upgrade-btn">💎 Upgrade to Access</button>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-indicator">
+                        <div class="usage-text">FREE TIER: 2/2 templates available</div>
+                        <button class="upgrade-btn">💎 Upgrade for full template library</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client List -->
+            <div class="phone">
+                <div class="screen">
+                    <div class="screen-title">Client Management</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Clients</div>
+                        <button class="add-btn">+ Add</button>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 12px; padding: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+                        <div style="color: #64748b;">🔍</div>
+                        <input style="border: none; outline: none; flex: 1; font-size: 14px;" placeholder="Search by name or company...">
+                    </div>
+                    
+                    <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">My Clients</div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">ABC Corp</div>
+                                <div class="invoice-client">Contact: John Smith</div>
+                                <div style="font-size: 11px; color: #64748b; margin-top: 4px;">
+                                    📧 john@abccorp.com • 📞 (555) 123
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 12px; color: #10b981; font-weight: 600; margin-top: 8px;">
+                            3 invoices • $2,850 total
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">XYZ Ltd</div>
+                                <div class="invoice-client">Contact: Sarah Johnson</div>
+                                <div style="font-size: 11px; color: #64748b; margin-top: 4px;">
+                                    📧 sarah@xyzltd.com • 📞 (555) 456
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 12px; color: #10b981; font-weight: 600; margin-top: 8px;">
+                            2 invoices • $1,200 total
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-card">
+                        <div class="invoice-header">
+                            <div>
+                                <div class="invoice-number">DEF Inc</div>
+                                <div class="invoice-client">Contact: Mike Wilson</div>
+                                <div style="font-size: 11px; color: #64748b; margin-top: 4px;">
+                                    📧 mike@definc.com • 📞 (555) 789
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 12px; color: #10b981; font-weight: 600; margin-top: 8px;">
+                            1 invoice • $950 total
+                        </div>
+                    </div>
+                    
+                    <div class="usage-indicator">
+                        <div class="usage-text">FREE TIER: 3/3 clients</div>
+                        <button class="upgrade-btn">💎 Upgrade for unlimited clients</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Management -->
+            <div class="phone">
+                <div class="screen subscription">
+                    <div class="screen-title">Subscription</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Subscription</div>
+                        <button class="add-btn">Manage</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Current Plan</div>
+                    
+                    <div class="plan-card">
+                        <div class="plan-title">FREE TIER</div>
+                        <div class="plan-subtitle">Active since: March 1, 2024</div>
+                        
+                        <div style="margin-bottom: 12px; font-size: 12px; font-weight: 600; color: #64748b;">Usage this month:</div>
+                        <div class="usage-bar">
+                            <div class="usage-item">
+                                <div class="usage-label">• Invoices</div>
+                                <div class="usage-count">2/5</div>
+                            </div>
+                            <div class="usage-item">
+                                <div class="usage-label">• Projects</div>
+                                <div class="usage-count">2/2</div>
+                            </div>
+                            <div class="usage-item">
+                                <div class="usage-label">• Clients</div>
+                                <div class="usage-count">3/3</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Upgrade to Premium</div>
+                    
+                    <div class="premium-card">
+                        <div class="premium-title">💎 PREMIUM</div>
+                        <div class="premium-price">$9.99/month</div>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Unlimited invoices</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Unlimited projects & clients</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Advanced analytics</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Recurring invoices</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Payment reminders</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Priority support</div>
+                            </div>
+                        </div>
+                        
+                        <button class="trial-btn">Start 7-Day Free Trial</button>
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button style="background: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 16px; font-size: 12px; color: #64748b;">Compare Plans</button>
+                        <button style="background: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 16px; font-size: 12px; color: #64748b;">Restore Purchases</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Invoice -->
+            <div class="phone">
+                <div class="screen">
+                    <div class="screen-title">Create Invoice</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">New Invoice</div>
+                        <button class="add-btn">Save Draft</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Invoice Details</div>
+                        
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Invoice #</div>
+                                    <input style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;" value="1025" readonly>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Date</div>
+                                    <input style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;" value="Today ▼">
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Due Date</div>
+                                <input style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;" value="Net 30 ▼">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Client</div>
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <select style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;">
+                                <option>Select Client ▼</option>
+                                <option>ABC Corp</option>
+                                <option>XYZ Ltd</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #1e293b;">Invoice Items</div>
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <input style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 8px; font-size: 14px;" placeholder="Description" value="Website Design">
+                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                <input style="flex: 1; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;" placeholder="Qty" value="1">
+                                <input style="flex: 1; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px;" placeholder="Rate" value="$500">
+                                <div style="flex: 1; padding: 8px; background: #f8fafc; border-radius: 6px; font-size: 14px; font-weight: 600;">$500</div>
+                            </div>
+                            <button style="color: #ef4444; background: none; border: none; font-size: 12px;">🗑 Delete</button>
+                        </div>
+                        
+                        <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+                            <button style="flex: 1; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 12px; background: white;">+ Add Item</button>
+                            <button style="flex: 1; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 12px; background: white;">+ Add Time Entry</button>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                            <div style="font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Summary</div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <div style="font-size: 12px; color: #64748b;">Subtotal</div>
+                                <div style="font-size: 12px; font-weight: 600;">$500.00</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <div style="font-size: 12px; color: #64748b;">Tax (0%)</div>
+                                <div style="font-size: 12px; font-weight: 600;">$0.00</div>
+                            </div>
+                            <hr style="margin: 8px 0; border: none; border-top: 1px solid #e2e8f0;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div style="font-size: 14px; font-weight: 700; color: #1e293b;">Total</div>
+                                <div style="font-size: 14px; font-weight: 700; color: #1e293b;">$500.00</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px;">
+                            <button style="flex: 1; padding: 14px; background: #667eea; color: white; border: none; border-radius: 12px; font-size: 14px; font-weight: 600;">Preview Invoice</button>
+                            <button style="flex: 1; padding: 14px; background: #10b981; color: white; border: none; border-radius: 12px; font-size: 14px; font-weight: 600;">Send Invoice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plan Selection -->
+            <div class="phone">
+                <div class="screen">
+                    <div class="screen-title">Plan Selection</div>
+                    <div class="page-header">
+                        <div class="back-btn">←</div>
+                        <div class="page-title">Choose Your Plan</div>
+                        <div></div>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 2px solid #e2e8f0;">
+                        <div style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">FREE TIER</div>
+                        <div style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Perfect for getting started</div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <div style="font-size: 12px; color: #64748b; margin-bottom: 8px;">
+                                • 5 invoices/month<br>
+                                • 2 projects tracking<br>
+                                • 2 contract templates<br>
+                                • 3 clients max<br>
+                                • Basic dashboard
+                            </div>
+                        </div>
+                        
+                        <button style="width: 100%; padding: 14px; background: #f1f5f9; color: #334155; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600;">Start Free</button>
+                    </div>
+                    
+                    <div class="premium-card">
+                        <div class="premium-title">💎 PREMIUM</div>
+                        <div class="premium-price">$9.99/month</div>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Unlimited invoices</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Unlimited projects</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Full template library</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Advanced analytics</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✅</div>
+                                <div>Recurring invoices</div>
+                            </div>
+                        </div>
+                        
+                        <button class="trial-btn">Start Free Trial - 7 days</button>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button style="background: none; border: none; color: #64748b; font-size: 12px; text-decoration: underline;">Skip for now - Start Free</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
